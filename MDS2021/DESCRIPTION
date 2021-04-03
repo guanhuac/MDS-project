@@ -1,0 +1,19 @@
+Package: MDS2021
+Title: MDS project
+Version: 0.1.0
+Date: 2021-03
+Authors@R: 
+    person(given = "Xinyue",
+           family = "Wang",
+           role = c("aut", "cre"),
+           email = "xwang2438@gmail.com")
+Description: Tidying up the code.
+License: CC0
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Depends: R (>= 2.10)
+Author: Xinyue Wang [aut, cre]
+Maintainer: Xinyue Wang <xwang2438@gmail.com>
+Built: R 3.6.3; ; 2021-04-03 01:32:33 UTC; windows
