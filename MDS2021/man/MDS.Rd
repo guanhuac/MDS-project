@@ -49,8 +49,8 @@ data(Martinez)
 tree = Martinez$tree
 otu.table = Martinez$otutable
 otu.count = t(otu.table)
-MDS(otu.count, distance = "bray", mdsrank = 5, est = "gap", K.max = 16, 
-    group = as.numeric(as.factor(Martinez$sampleinfo)), randMethod = "MA")
+MDS(otu.count, distance = "bray", mdsrank = 5, est = "gap", K.max = 16,
+group = as.numeric(as.factor(Martinez$sampleinfo)), randMethod = "MA")
 }
 \keyword{ARI}
 \keyword{MDS,}

@@ -22,7 +22,7 @@ By default, "MA" will be output.}
 
 \item{trim}{logical. By default, it's FALSE. If TRUE, please indicate the threshold.}
 
-\item{threshold}{trim the matrix with otu.count\link{, which(colSums(otu.count) > threshold)}.}
+\item{threshold}{trim the matrix with otu.count[ , which(colSums(otu.count) > threshold)].}
 }
 \value{
 A list of 3 containing k (the numbers of Dirichlet components), ARI (the corresponding adjusted
@@ -37,8 +37,8 @@ data(Martinez)
 tree = Martinez$tree
 otu.table = Martinez$otutable
 otu.count = t(otu.table)
-DMM(otu.count, group = as.numeric(as.factor(Martinez$sampleinfo)), k = c(2, 3, 5), 
-    trim = T, threshold = 5)
+DMM(otu.count, group = as.numeric(as.factor(Martinez$sampleinfo)),
+k = c(2,3,5), trim = T, threshold = 5)
 }
 \keyword{ARI}
 \keyword{DMM,}

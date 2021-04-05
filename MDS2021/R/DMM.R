@@ -14,7 +14,7 @@
 #' By default, "MA" will be output.
 #' @param seed set.seed with the given number. By default, set.seed(2021).
 #' @param trim logical. By default, it's FALSE. If TRUE, please indicate the threshold.
-#' @param threshold trim the matrix with otu.count[, which(colSums(otu.count) > threshold)].
+#' @param threshold trim the matrix with otu.count\[ , which(colSums(otu.count) > threshold)\].
 #'
 #' @keywords DMM, ARI
 #'
