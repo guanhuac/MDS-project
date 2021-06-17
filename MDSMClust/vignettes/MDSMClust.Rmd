@@ -1,0 +1,94 @@
+---
+title: "MDSMClust: Multidimensional Scaling for Microbiome Clustering"
+author: Guanhua Chen, Xinyue Wang
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{MDSMClust}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MDSMClust)
+```
+
+# Overview
+
+The MDS for Microbiome Clustering package (v0.1.0) contains functions that conduct classical multidimensional scaling (MDS) with seven different distances or fit Dirichlet Multinomial Models (DMM) to a count matrix first, and then calculate agreement indices between any two partitions for a data set. It also contains four data sets which are used to simulate counts or analyzed as real data sets.
+
+# Dependencies
+
+The following packages are required for functions and examples in the MDS for Microbiome Clustering package: SpiecEasi (>= 1.1.0), BiocManager (>= 1.30.10), philr (>= 1.14.0), fpc (>= 2.2.8), MiSPU (>= 1.0), GUniFrac (>= 1.1), miProfile (>= 1.0), dirmult (>= 0.1.3.4), cluster (>= 2.1.0), clues (>= 0.6.2.2), DirichletMultinomial (>= 1.30.0), MASS (>= 7.3.53), vegan (>= 2.5.6), reshape2 (>= 1.4.4). Among these packages, the most special one is *SpiecEasi* because you can only install it by the command  "install_github("zdk123/SpiecEasi")". And *philr* and *DirichletMultinomial* are installed through *BiocManager*. Be careful with the package *miProfile*, it is not available on CRAN now and this is the only one you need to install manually before using our package. Other required packages are available on CRAN.
+
+# Examples for Function MDS
+
+## Data Preparation
+
+Take two real data sets as examples.
+
+```{r}
+data("Martinez")
+str(Martinez, list.len = 3)
+data("Smits")
+str(Smits, list.len = 3)
+```
+
+## Conduct MDS and Evaluate the Clustering Results
+
+### Martinez
+
+```{r}
+data("Martinez")
+
+# get the tree information - it's necessary when you choose a distance which needs the tree information
+tree = Martinez$tree
+
+# get the OTU matrix - rows are samples and columns are taxa
+otu.table = Martinez$otutable
+otu.count = t(otu.table)
+dim(otu.count)
+
+# invoke the function MDS - you need to decide the parameters first
+table(Martinez$sampleinfo)
+MDS(otu.count, distance = "bray", mdsrank = 5, est = "gap", K.max = 16,
+group = as.numeric(as.factor(Martinez$sampleinfo)), randMethod = "MA")
+```
+
+### Smits
+
+```{r message=FALSE}
+data("Smits")
+
+# get the tree information - it's necessary when you choose a distance which needs the tree information
+tree = Smits$tree
+
+# get the OTU matrix - rows are samples and columns are taxa
+otu.table = as.matrix(Smits$otutable)
+otu.count = t(otu.table)
+dim(otu.count)
+
+# invoke the function MDS - you need to decide the parameters first
+table(Smits$sampleinfo)
+s = MDS(otu.count, distance = "PhILR", tree = tree, mdsrank = 5, est = "si", K.max = 8, group = as.numeric(as.factor(Smits$sampleinfo)), randMethod = "HA", seed = 2021)
+s$bestk
+s$ARI
+table(s$cluster)
+```
+
+# Examples for Function DMM - Martinez
+
+```{r}
+data(Martinez)
+tree = Martinez$tree
+otu.table = Martinez$otutable
+otu.count = t(otu.table)
+
+DMM(otu.count, group = as.numeric(as.factor(Martinez$sampleinfo)), k = 5, trim = T, threshold = 5)
+```
