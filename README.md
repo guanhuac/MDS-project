@@ -11,6 +11,7 @@ The package implements a two-step procedure: it first applies classical multidim
 > 📄 The methods implemented in this package are described in the paper:
 > **Multidimensional scaling improves distance-based clustering for microbiome data**
 > *Bioinformatics (2025), Volume 41, Issue 2, btaf042*
+> 
 > [Read the article](https://academic.oup.com/bioinformatics/article/41/2/btaf042/7985707)
 
 
