@@ -4,7 +4,9 @@
 
 [![DOI](https://img.shields.io/badge/DOI-10.1093/bioinformatics/btaf042-blue)](https://doi.org/10.1093/bioinformatics/btaf042)
 
-`MDSMClust` is an R package designed to perform microbiome sample clustering using classical multidimensional scaling (MDS) combined with various ecological and compositional distances. It provides flexible support for both unsupervised clustering and validation of clustering quality, particularly in microbiome data characterized by sparsity and compositionality.
+`MDSMClust` is an R package for microbiome sample clustering based on various distance measures. It supports flexible unsupervised clustering and offers tools to assess clustering quality, particularly suited for microbiome data with sparsity and compositional constraints.
+
+The package implements a two-step procedure: it first applies classical multidimensional scaling (MDS) to denoise and reduce the dimensionality of high-dimensional microbiome data, and then performs distance-based clustering in the low-dimensional space. This approach improves clustering performance, especially under sparse signal scenarios.
 
 > 📄 The methods implemented in this package are described in the paper:
 > **Multidimensional scaling improves distance-based clustering for microbiome data**
@@ -15,13 +17,15 @@
 
 ## Features
 
-* Multidimensional Scaling (MDS) with support for:
+* Multidimensional Scaling (MDS) with support for distances:
 
   * Bray-Curtis
   * Jaccard
   * UniFrac (unweighted/weighted/generalized)
   * PhILR
   * CLR (centered log-ratio)
+ 
+  * or fit Dirichlet Multinomial Models (DMM)
 
 * Clustering with:
 
@@ -29,12 +33,13 @@
   * Silhouette Index
   * Prediction Strength
 
-* Evaluation of clustering accuracy using:
+* Evaluation of clustering accuracy using Adjusted Rand Index (ARI) with several indices supported:
 
-  * Adjusted Rand Index (ARI)
-  * Multiple external indices (MA, HA, FM, Jaccard, etc.)
-
-* Comparison with Dirichlet Multinomial Models (DMM)
+  * "Rand" – Rand Index
+  * "HA" – Hubert and Arabie’s Adjusted Rand Index
+  * "MA" – Morey and Agresti’s Adjusted Rand Index (default)
+  * "FM" – Fowlkes and Mallows Index
+  * "Jaccard" – Jaccard Index
 
 
 
