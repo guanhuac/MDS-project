@@ -72,7 +72,7 @@ install.packages("path_to_MDSMClust", repos = NULL, type = "source")
 
 ## Usage
 
-See detailed instructions [here]().
+See detailed instructions [here](https://github.com/wxy929/MDS/tree/main/MDSMClust/vignettes). We provide the materials in Rmd, HTML, and PDF formats.
 
 
 
