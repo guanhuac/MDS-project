@@ -1484,8 +1484,8 @@ border-radius: 0px;
 </div>
 
 
-<pre class="r"><code># Install MDSMClust from GitHub
-# devtools::install_github(&quot;wxy929/MDS/MDSMClust&quot;)
+<pre class="r"><code># Install MDSMClust from GitHub  
+# Detailed instructions can be found here: https://github.com/wxy929/MDS/blob/main/README.md
 
 library(MDSMClust)</code></pre>
 <div id="overview" class="section level1">
@@ -1496,35 +1496,6 @@ different distances or fit Dirichlet Multinomial Models (DMM) to a count
 matrix first, and then calculate agreement indices between any two
 partitions for a data set. It also contains four data sets which are
 used to simulate counts or analyzed as real data sets.</p>
-</div>
-<div id="dependencies" class="section level1">
-<h1>Dependencies</h1>
-<p>The following packages are required for functions and examples in the
-MDS for Microbiome Clustering package:</p>
-<ul>
-<li>SpiecEasi (&gt;= 1.1.0)</li>
-<li>BiocManager (&gt;= 1.30.10)</li>
-<li>philr (&gt;= 1.14.0)</li>
-<li>fpc (&gt;= 2.2.8)</li>
-<li>MiSPU (&gt;= 1.0)</li>
-<li>GUniFrac (&gt;= 1.1)</li>
-<li>miProfile (&gt;= 1.0)</li>
-<li>dirmult (&gt;= 0.1.3.4)</li>
-<li>cluster (&gt;= 2.1.0)</li>
-<li>clues (&gt;= 0.6.2.2)</li>
-<li>DirichletMultinomial (&gt;= 1.30.0)</li>
-<li>MASS (&gt;= 7.3.53)</li>
-<li>vegan (&gt;= 2.5.6)</li>
-<li>reshape2 (&gt;= 1.4.4).</li>
-</ul>
-<p>Among these packages, the most special one is <em>SpiecEasi</em>
-because you can only install it by the command
-“install_github(”zdk123/SpiecEasi”)“. And <em>philr</em> and
-<em>DirichletMultinomial</em> are installed through
-<em>BiocManager</em>. Be careful with the package <em>miProfile</em>, it
-is not available on CRAN now and this is the only one you need to
-install manually before using our package. Other required packages are
-available on CRAN.</p>
 </div>
 <div id="examples-for-the-function-mds" class="section level1">
 <h1>Examples for the Function MDS</h1>
@@ -1680,27 +1651,26 @@ tree = Martinez$tree
 otu.table = Martinez$otutable
 otu.count = t(otu.table)
 
-DMM(otu.count, group = as.numeric(as.factor(Martinez$sampleinfo)), k = 5, trim = T, threshold = 5)</code></pre>
+DMM(otu.count, group = as.numeric(as.factor(Martinez$sampleinfo)), k = 5, trim = TRUE, threshold = 5)</code></pre>
 </div>
 <div id="example-code-to-reproduce-dm-simulation-in-the-paper" class="section level1">
 <h1>Example Code to Reproduce DM Simulation in the paper</h1>
 <pre class="r"><code>rm(list = ls())
 
-library(SpiecEasi)
-library(philr)
-library(fpc)
-library(MiSPU)
-library(GUniFrac)
-library(miProfile)
+# library(SpiecEasi)
+# library(philr)
+# library(fpc)
+# library(MiSPU)
+# library(GUniFrac)
 library(dirmult)
-library(cluster)
-library(clues)
+# library(cluster)
+# library(clues)
 library(DirichletMultinomial)
-library(MASS)
-library(vegan)
-library(mvtnorm)
-library(reshape2)
-library(doSNOW)
+# library(MASS)
+# library(vegan)
+# library(mvtnorm)
+# library(reshape2)
+# library(doSNOW)
 library(MDSMClust)
 
 # pre_DM_RData ----------------------------------------------
