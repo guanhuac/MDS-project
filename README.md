@@ -46,7 +46,7 @@ The package implements a two-step procedure: it first applies classical multidim
 
 ## Installation
 
-You can install the development version of `MDSMClust` directly from GitHub or manually:
+You can install the package `MDSMClust` directly from GitHub or manually:
 
 ```r
 ############################################################
