@@ -58,9 +58,6 @@ MDS = function(otu.count, distance, tree, mdsrank, k = c(), est, threshold = 0.9
   if (!requireNamespace("GUniFrac", quietly = TRUE)){
     install.packages("GUniFrac")
   }
-  if (!requireNamespace("miProfile", quietly = TRUE)){
-    print("Please install package miProfile.")
-  }
   if (!requireNamespace("dirmult", quietly = TRUE)){
     install.packages("dirmult")
   }
@@ -88,7 +85,6 @@ MDS = function(otu.count, distance, tree, mdsrank, k = c(), est, threshold = 0.9
   suppressMessages(library("fpc"))
   suppressMessages(library("MiSPU"))
   suppressMessages(library("GUniFrac"))
-  suppressMessages(library("miProfile"))
   suppressMessages(library("dirmult"))
   suppressMessages(library("cluster"))
   suppressMessages(library("clues"))
