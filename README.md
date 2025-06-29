@@ -49,15 +49,46 @@ The package implements a two-step procedure: it first applies classical multidim
 You can install the development version of `MDSMClust` directly from GitHub or manually:
 
 ```r
-# Install devtools if not already installed
-install.packages("devtools")
+############################################################
+# Installation Script for MDSMClust and Required Packages
+# Last Updated: 2025.06
+#
+# This script installs necessary packages to use MDSMClust,
+# including archived CRAN packages, GitHub packages, and Bioconductor.
+############################################################
 
-# Install MDSMClust from GitHub
-devtools::install_github("wxy929/MDS/MDSMClust")
+# Step 1: Install the archived 'clues' package from CRAN
+install.packages(
+  "https://cran.r-project.org/src/contrib/Archive/clues/clues_0.6.2.2.tar.gz",
+  repos = NULL,
+  type = "source"
+)
 
-# Install MDSMClust from source
-# (Assuming you've downloaded or cloned the package repo)
-install.packages("path_to_MDSMClust", repos = NULL, type = "source")
+# Step 2: Install 'devtools' if not already installed (for GitHub packages)
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+library(devtools)
+
+# Step 3: Install the 'SpiecEasi' package from GitHub
+install_github("zdk123/SpiecEasi")
+library(SpiecEasi)
+
+# Step 4: Install 'philr' from Bioconductor
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+BiocManager::install("philr")
+
+# Step 5: Install MDSMClust from GitHub (official version)
+install_github("wxy929/MDS/MDSMClust")
+
+# Step 6 (Optional): Install MDSMClust from local source (if downloaded)
+# Replace "path_to_MDSMClust" with your local file path
+# install.packages("path_to_MDSMClust", repos = NULL, type = "source")
+
+# Done! You can now load MDSMClust using:
+# library(MDSMClust)
 ```
 
 
